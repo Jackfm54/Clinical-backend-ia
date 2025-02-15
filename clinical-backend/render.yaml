@@ -1,0 +1,31 @@
+services:
+  - name: clinical-backend
+    type: web
+    env: docker
+    plan: free
+    repo: https://github.com/Jackfm54/Clinical-backend-ia
+    region: oregon
+    rootDirectory: clinical-backend
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 5001
+    dockerfilePath: ./clinical-backend/Dockerfile
+
+
+# version 2 with ollama
+# services:
+#   - name: clinical-backend
+#     type: web
+#     env: docker
+#     plan: free
+#     repo: https://github.com/Jackfm54/Clinical-backend-ia
+#     region: oregon
+#     rootDirectory: clinical-backend
+#     healthCheckPath: /health
+#     envVars:
+#       - key: PORT
+#         value: 5001
+#       - key: OLLAMA_URL
+#         value: http://localhost:11434
+#     dockerfilePath: ./clinical-backend/Dockerfile

@@ -1,0 +1,250 @@
+.dashboard-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	font-family: Arial, sans-serif;
+	color: #333;
+}
+
+.dashboard-container h2 {
+	color: #4caf50;
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.dashboard-container p {
+	font-size: 1.1rem;
+	color: #555;
+}
+
+.health-data-form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	max-width: 400px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #f9f9f9;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.health-data-form label {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+.health-data-form input {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	outline: none;
+	transition: border-color 0.3s;
+}
+
+.health-data-form input:focus {
+	border-color: #007bff;
+}
+
+.health-data-form button {
+	padding: 10px 15px;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	background-color: #007bff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.health-data-form button:hover {
+	background-color: #0056b3;
+}
+
+.health-data-form button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+.dashboard-container .health-data-list {
+	list-style-type: none;
+	padding: 0;
+	margin-top: 1.5rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+}
+
+.dashboard-container .health-data-list li {
+	padding: 1rem;
+	border-bottom: 1px solid #ddd;
+	font-size: 1rem;
+}
+
+.dashboard-container .health-data-list li:last-child {
+	border-bottom: none;
+}
+
+.dashboard-container .health-data-list li p {
+	margin: 0.5rem 0;
+}
+
+.dashboard-container .health-data-list li strong {
+	color: #333;
+}
+
+.dashboard-container .health-data-list li:hover {
+	background-color: #f0f0f0;
+}
+
+.dashboard-container h3 {
+	color: #333;
+	font-size: 1.5rem;
+	margin-top: 2rem;
+}
+
+.dashboard-container .logout-container {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.dashboard-container button {
+	padding: 0.8rem 1.5rem;
+	font-size: 1rem;
+	background-color: #f44336;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.dashboard-container button:hover {
+	background-color: #d32f2f;
+}
+
+.dashboard-container button:focus {
+	outline: none;
+	box-shadow: 0 0 5px rgba(244, 67, 54, 0.7);
+}
+
+.dashboard-container .loading {
+	text-align: center;
+	font-size: 1.2rem;
+	color: #777;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	gap: 10px;
+}
+
+.pagination button {
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #f20909;
+	cursor: pointer;
+}
+
+.pagination button:disabled {
+	background-color: #e0e0e0;
+	cursor: not-allowed;
+}
+
+.pagination span {
+	font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+	.dashboard-container {
+		max-width: 100%;
+		margin: 0;
+		padding: 1rem;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.dashboard-container h2 {
+		font-size: 1.8rem;
+	}
+
+	.dashboard-container p {
+		font-size: 1rem;
+	}
+
+	.health-data-form {
+		max-width: 100%;
+		padding: 15px;
+		border: none;
+		box-shadow: none;
+	}
+
+	.health-data-form label {
+		font-size: 13px;
+	}
+
+	.health-data-form input {
+		font-size: 14px;
+		padding: 8px;
+	}
+
+	.health-data-form button {
+		font-size: 14px;
+		padding: 8px 12px;
+	}
+
+	.dashboard-container .health-data-list {
+		border: none;
+		border-radius: 0;
+		margin-top: 1rem;
+	}
+
+	.dashboard-container .health-data-list li {
+		padding: 0.8rem;
+		font-size: 0.9rem;
+	}
+
+	.dashboard-container h3 {
+		font-size: 1.3rem;
+	}
+
+	.dashboard-container .logout-container {
+		margin-top: 1.5rem;
+	}
+
+	.dashboard-container button {
+		font-size: 0.9rem;
+		padding: 0.6rem 1rem;
+		border-radius: 3px;
+	}
+
+	.pagination {
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.pagination button {
+		font-size: 12px;
+		padding: 6px 10px;
+		border-radius: 3px;
+	}
+
+	.pagination span {
+		font-size: 0.9rem;
+	}
+}

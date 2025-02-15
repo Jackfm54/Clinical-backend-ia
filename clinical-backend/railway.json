@@ -1,0 +1,12 @@
+{
+  "build": {
+    "dockerfile": "clinical-backend/Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "ollama serve & sleep 20 && ollama pull ALIENTELLIGENCE/medicaldiagnostictools && node src/app.js"
+  },
+  "env": {
+    "PORT": "5001",
+    "OLLAMA_URL": "http://localhost:11434"
+  }
+}

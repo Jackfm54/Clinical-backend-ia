@@ -1,0 +1,127 @@
+.register {
+	max-width: 400px;
+	margin: 3rem auto;
+	padding: 2rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	font-family: Arial, sans-serif;
+  }
+  
+  .register h2 {
+	text-align: center;
+	color: #4caf50;
+	margin-bottom: 1.5rem;
+  }
+  
+  .register form {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .register label {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	color: #333;
+  }
+  
+  .register input {
+	margin-bottom: 1rem;
+	padding: 0.8rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+	transition: border-color 0.3s ease;
+  }
+  
+  .register input:focus {
+	border-color: #4caf50;
+	outline: none;
+	box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+  
+  .register button {
+	background-color: #4caf50;
+	color: white;
+	padding: 0.8rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-bottom: 1rem;
+  }
+  
+  .register button:hover {
+	background-color: #388e3c;
+  }
+  
+  .register .webcam-container {
+	text-align: center;
+	margin: 1rem 0;
+  }
+  
+  .register .webcam-container video {
+	border: 2px solid #ddd;
+	border-radius: 8px;
+	width: 100%;
+	max-width: 300px;
+  }
+  
+  .register .recording-indicator {
+	color: red;
+	font-weight: bold;
+	margin-top: 0.5rem;
+	text-align: center;
+  }
+  
+  .register p {
+	text-align: center;
+	margin-top: 1rem;
+	font-size: 0.9rem;
+  }
+  
+  .register p.success {
+	color: #4caf50;
+  }
+  
+  .register p.error {
+	color: #f44336;
+  }
+  
+  @media screen and (max-width: 768px) {
+	.register {
+	  max-width: 100%;
+	  margin: 1rem auto;
+	  padding: 1.5rem;
+	  border: 1px solid #ddd;
+	  border-radius: 8px;
+	  background-color: #fff;
+	  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	}
+  
+	.register h2 {
+	  font-size: 1.5rem;
+	  margin-bottom: 1rem;
+	}
+  
+	.register label {
+	  font-size: 0.9rem;
+	}
+  
+	.register input {
+	  font-size: 0.9rem;
+	  padding: 0.7rem;
+	}
+  
+	.register button {
+	  font-size: 0.9rem;
+	  padding: 0.7rem;
+	}
+  
+	.register p {
+	  font-size: 0.8rem;
+	}
+  }
+  

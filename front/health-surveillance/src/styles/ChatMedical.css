@@ -1,0 +1,162 @@
+.chat-medical {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.chat-medical form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.chat-medical input {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chat-medical button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-medical button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.conversation-box {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.user-message {
+  background-color: #e6f7ff;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #f1f1f1;
+  text-align: left;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.message-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-message {
+  background-color: #e6f7ff;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.bot-message {
+  background-color: #f1f1f1;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+  .chat-medical {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .chat-medical form {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .chat-medical input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .chat-medical button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .chat-medical button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .conversation-box {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    scroll-behavior: smooth;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+
+  .message-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .user-message {
+    background-color: #e6f7ff;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .bot-message {
+    background-color: #f1f1f1;
+    text-align: left;
+    justify-content: flex-start;
+  }
+}

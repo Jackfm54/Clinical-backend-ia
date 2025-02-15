@@ -1,0 +1,14 @@
+[
+  {
+    "heartRate": 80,
+    "bloodPressure": "120/80",
+    "oxygenLevel": 98,
+    "expectedRiskLevel": "Low"
+  },
+  {
+    "heartRate": 120,
+    "bloodPressure": "140/90",
+    "oxygenLevel": 92,
+    "expectedRiskLevel": "High"
+  }
+]
