@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:5001/api";
+// const API_BASE_URL = "http://127.0.0.1:5001/api";
 // const API_BASE_URL = "https://clinical-backend-ia.onrender.com/api";
 // const API_BASE_URL = "https://clinical-backend.onrender.com/api";
+const API_BASE_URL = "https://clinical-backend-ia-3t0k.onrender.com/api";
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
