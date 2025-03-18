@@ -1,5 +1,6 @@
 const express = require("express");
 const { saveHealthData, getHealthDataByUser } = require("../controllers/HealthDataController");
+const { sendRiskAlert } = require("../services/emailService");
 
 const router = express.Router();
 

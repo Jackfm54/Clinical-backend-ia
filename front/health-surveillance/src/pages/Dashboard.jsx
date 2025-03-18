@@ -21,7 +21,6 @@ const Dashboard = () => {
     oxygenLevel: "",
   });
 
-  // Pagination - Gestion de la pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
@@ -57,6 +56,12 @@ const Dashboard = () => {
       fetchHealthData(userData.id);
     }
   }, [navigate]);
+
+  useEffect(() => {
+    if (predictions?.classification === "Risque Élevé") {
+      alert("⚠️ Alerte ! Votre état de santé est préoccupant. Contactez votre médecin immédiatement.");
+    }
+  }, [predictions]);
 
   const fetchHealthData = async (userId) => {
     try {
@@ -101,6 +106,15 @@ const Dashboard = () => {
           <h2>Bienvenue, <b>{user.name}!</b></h2>
           <p>Votre e-mail : <b>{user.email}</b></p>
           <LogoutButton />
+
+          {user.role === "doctor" && (
+            <div className="admin-buttons">
+              <button onClick={() => navigate("/admin-dashboard")}>Admin Dashboard</button>
+              <br />
+              <br />
+              <button onClick={() => navigate("/health-data")}>Gestion des Patients</button>
+            </div>
+          )}
 
           <h3>Enregistrer vos données de santé</h3>
           <form onSubmit={handleSubmitHealthData} className="health-data-form">
@@ -187,18 +201,31 @@ const Dashboard = () => {
           {/* Afficher les prédictions */}
           <h3>Prédictions</h3>
           {predictions ? (
-            <div className="predictions">
+            <div className={`predictions ${predictions.classification === "Risque Élevé" ? "high-risk" : ""}`}>
               <p>
-                <strong>Prochaine fréquence cardiaque :</strong>{" "}
-                {predictions.regression.nextHeartRate} bpm
+                <strong>Prochaine fréquence cardiaque :</strong> {predictions.regression.nextHeartRate} bpm
               </p>
               <p>
-                <strong>Prochain niveau d'oxygène :</strong>{" "}
-                {predictions.regression.nextOxygenLevel}%
+                <strong>Prochain niveau d'oxygène :</strong> {predictions.regression.nextOxygenLevel}%
               </p>
               <p>
-                <strong>Niveau de risque :</strong> {predictions.classification}
+                <strong>Niveau de risque :</strong> <span className="risk-level">{predictions.classification}</span>
               </p>
+
+              {/* 📢 Si le risque est élevé et que le patient a un médecin assigné */}
+              {predictions.classification === "Risque Élevé" && user.doctorEmail && (
+                <div className="alert-container">
+                  <p className="alert-message">
+                    ⚠️ <strong>Alerte :</strong> Votre état de santé est préoccupant. Nous vous recommandons de contacter votre médecin immédiatement.
+                  </p>
+
+                  {/* 📩 Bouton pour contacter le médecin */}
+                  <a href={`mailto:${user.doctorEmail}?subject=Urgence Médicale - Risque Élevé`}
+                    className="contact-doctor-button">
+                    📩 Contacter mon médecin
+                  </a>
+                </div>
+              )}
             </div>
           ) : (
             <p>Chargement des prédictions...</p>

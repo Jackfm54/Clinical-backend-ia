@@ -11,6 +11,8 @@ const aiRoutes = require("./routes/aiRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const { initSocket } = require("./services/socketService");
 const recognitionRoutes = require("./routes/recognitionRoutes");
+const messageRoutes = require("./routes/messageRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
 
 const app = express();
 
@@ -25,6 +27,8 @@ app.use("/api/health-data", healthDataRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/recognition", recognitionRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 const server = http.createServer(app);
 initSocket(server);

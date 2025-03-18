@@ -19,6 +19,7 @@ const healthDataSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    riskLevel: { type: String, default: "🟢 Faible" },
   },
   { timestamps: true }
 );

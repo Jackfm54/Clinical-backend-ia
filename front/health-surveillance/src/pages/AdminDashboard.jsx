@@ -1,68 +1,73 @@
 import React, { useEffect, useState } from "react";
-import { fetchUsers, fetchHealthDataByUser } from "../services/api";
+import { api } from "../services/api";
+import "../styles/AdminDashboard.css";
 
 const AdminDashboard = () => {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [healthData, setHealthData] = useState([]);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const loadUsers = async () => {
+    const fetchNotifications = async () => {
+      const storedDoctor = localStorage.getItem("user");
+      if (!storedDoctor) return;
+
+      const doctor = JSON.parse(storedDoctor);
+
       try {
-        const userList = await fetchUsers();
-        setUsers(userList);
+        const response = await api.get(`/notifications/${doctor.id}`);
+        setNotifications(response.data);
       } catch (error) {
-        console.error("Échec de la récupération des utilisateurs :", error);
+        console.error("Erreur lors de la récupération des notifications :", error);
       }
     };
-    loadUsers();
+
+    fetchNotifications();
   }, []);
 
-  const handleUserSelect = async (userId) => {
+  // 📌 Fonction pour supprimer une notification
+  const handleDeleteNotification = async (notificationId) => {
     try {
-      const data = await fetchHealthDataByUser(userId);
-      setHealthData(data);
-      const user = users.find((u) => u._id === userId);
-      setSelectedUser(user);
+      await api.delete(`/notifications/${notificationId}`);
+      setNotifications(notifications.filter((notif) => notif._id !== notificationId));
     } catch (error) {
-      console.error("Échec de la récupération des données de santé pour l'utilisateur :", error);
+      console.error("Erreur lors de la suppression de la notification :", error);
     }
   };
 
   return (
-    <div>
-      <h1>Tableau de bord administrateur</h1>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <div>
-          <h2>Utilisateurs</h2>
+    <div className="admin-dashboard">
+      <h1>Tableau de bord du Médecin</h1>
+
+      {/* 🔔 Notifications */}
+      <div className="notifications">
+        <h2>🔔 Notifications</h2>
+        {notifications.length === 0 ? (
+          <p>Aucune notification disponible.</p>
+        ) : (
           <ul>
-            {users.map((user) => (
-              <li key={user._id}>
-                <button onClick={() => handleUserSelect(user._id)}>
-                  {user.name} ({user.email})
+            {notifications.map((notif) => (
+              <li key={notif._id}>
+                {notif.message} - <small>{new Date(notif.createdAt).toLocaleString()}</small>
+                
+                {/* 📧 Bouton pour envoyer un email au patient */}
+                {notif.patientId?.email && (
+                  <a 
+                    href={`mailto:${notif.patientId.email}?subject=Suivi médical&body=Bonjour ${notif.patientId.name},\n\nJe vous contacte concernant votre état de santé.`}
+                    className="email-link"
+                  >
+                    📧 Envoyer un Email
+                  </a>
+                )}
+
+                {/* 🗑️ Bouton pour supprimer la notification */}
+                <button 
+                  onClick={() => handleDeleteNotification(notif._id)}
+                  className="delete-button"
+                >
+                  🗑️ Supprimer
                 </button>
               </li>
             ))}
           </ul>
-        </div>
-        {selectedUser && (
-          <div>
-            <h2>Données de santé pour {selectedUser.name}</h2>
-            {healthData.length > 0 ? (
-              <ul>
-                {healthData.map((data) => (
-                  <li key={data._id}>
-                    <p><strong>Fréquence cardiaque :</strong> {data.heartRate} bpm</p>
-                    <p><strong>Pression artérielle :</strong> {data.bloodPressure}</p>
-                    <p><strong>Niveau d'oxygène :</strong> {data.oxygenLevel}%</p>
-                    <p><strong>Date :</strong> {new Date(data.createdAt).toLocaleString()}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>Aucune donnée de santé disponible.</p>
-            )}
-          </div>
         )}
       </div>
     </div>
