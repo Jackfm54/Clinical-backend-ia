@@ -7,35 +7,45 @@ const PYTHON_SERVICE_URL = "http://127.0.0.1:5002";
 
 const createUser = async (req, res) => {
   try {
-    console.log("Données reçues dans createUser :", req.body);
-    console.log("Fichiers reçus :", req.files);
+    console.log("📩 Données reçues dans createUser :", req.body);
 
-    const { name, email, password } = req.body;
+    const { name, email, password, doctorId, role } = req.body; // 📌 Recibir doctorId
     const faceData = req.files?.["faceImage"] ? req.files["faceImage"][0].buffer : null;
     const voiceData = req.files?.["voiceData"] ? req.files["voiceData"][0].buffer : null;
 
     if (!password) {
-      return res.status(400).json({ message: "Le mot de passe est requis" });
+      return res.status(400).json({ message: "🔴 Le mot de passe est requis" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const userRole = role === "doctor" ? "doctor" : "user";
+
+    // 📌 Si es un paciente, verificar que el doctor exista
+    if (userRole === "user" && doctorId) {
+      const doctorExists = await User.findById(doctorId);
+      if (!doctorExists || doctorExists.role !== "doctor") {
+        return res.status(400).json({ message: "🔴 Doctor introuvable ou invalide" });
+      }
+    }
 
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
+      role: userRole,
+      doctorId: userRole === "user" ? doctorId : null, // 📌 Asignar doctorId solo si es paciente
       faceEncoding: faceData || null,
       voiceText: voiceData || null,
     });
 
-    console.log("Utilisateur enregistré avec succès :", user);
+    console.log("✅ Utilisateur enregistré avec succès :", user);
     res.status(201).json({
       message: "Utilisateur enregistré avec succès",
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { id: user._id, name: user.name, email: user.email, role: user.role, doctorId: user.doctorId },
     });
 
   } catch (error) {
-    console.error("Erreur dans createUser :", error);
+    console.error("❌ Erreur dans createUser :", error);
     res.status(500).json({ message: "Erreur interne du serveur", error: error.message });
   }
 };
@@ -82,7 +92,7 @@ const loginUser = async (req, res) => {
 
     res.status(200).json({
       message: "Connexion réussie",
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { id: user._id, name: user.name, email: user.email, role: user.role },
     });
 
   } catch (error) {
@@ -91,4 +101,36 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getUsers, loginUser };
+const getUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId, { password: 0 }); // Excluir contraseña
+
+    if (!user) {
+      return res.status(404).json({ message: "Utilisateur non trouvé" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Erreur dans getUserById :", error);
+    res.status(500).json({ message: "Erreur interne du serveur" });
+  }
+};
+
+const getUsersByDoctor = async (req, res) => {
+  try {
+    const { doctorId } = req.query;  // Asegurar que obtenemos el doctorId
+    if (!doctorId) {
+      return res.status(400).json({ message: "DoctorId requis" });
+    }
+
+    const patients = await User.find({ doctorId: doctorId }); // Buscar pacientes con doctorId
+    res.status(200).json(patients);
+  } catch (error) {
+    console.error("❌ Erreur dans getUsersByDoctor :", error);
+    res.status(500).json({ message: "Erreur interne du serveur", error: error.message });
+  }
+};
+
+
+module.exports = { createUser, getUsers, loginUser, getUserById, getUsersByDoctor };

@@ -1,288 +1,236 @@
+/* 🌈 Variables de colores mejorados */
+:root {
+    --primary-color: #0077b6; /* Azul hospitalario */
+    --secondary-color: #ffffff; /* Blanco */
+    --accent-color: #00b894; /* Verde esmeralda */
+    --background-color: #f1f3f4; /* Gris claro */
+    --card-background: #ffffff; /* Fondo de tarjetas */
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --alert-color: #e63946; /* Rojo alerta */
+}
+
+/* 🌍 Animación de carga del Dashboard */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📌 Fondo general del Dashboard */
 .dashboard-container {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 2rem;
-	background-color: #f9f9f9;
-	border-radius: 8px;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-	font-family: Arial, sans-serif;
-	color: #333;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--background-color), #d0e8ff);
+    border-radius: 12px;
+    box-shadow: 0px 5px 12px var(--shadow-color);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
+/* 🏥 Títulos */
 .dashboard-container h2 {
-	color: #4caf50;
-	font-size: 2rem;
-	text-align: center;
-	margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 2.3rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
 }
 
+/* 📋 Textos */
 .dashboard-container p {
-	font-size: 1.1rem;
-	color: #555;
+    font-size: 1.1rem;
+    color: #555;
 }
 
+/* 📑 Tarjetas de Datos */
 .health-data-form {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
-	max-width: 400px;
-	margin: 20px auto;
-	padding: 20px;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	background-color: #f9f9f9;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--card-background);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
 }
 
+/* 🖱️ Hover en Formularios */
+.health-data-form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* ✏️ Formularios y Campos */
 .health-data-form label {
-	font-size: 14px;
-	font-weight: bold;
-	color: #333;
-	margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
 }
 
 .health-data-form input {
-	width: 100%;
-	padding: 10px;
-	font-size: 14px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	outline: none;
-	transition: border-color 0.3s;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* 🎯 Efecto en Focus */
 .health-data-form input:focus {
-	border-color: #007bff;
+    border-color: var(--accent-color);
+    box-shadow: 0px 0px 6px var(--accent-color);
 }
 
+/* 🚀 Botón Interactivo */
 .health-data-form button {
-	padding: 10px 15px;
-	font-size: 16px;
-	font-weight: bold;
-	color: white;
-	background-color: #007bff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0px 4px 6px rgba(0, 191, 165, 0.3);
 }
 
+/* 🎭 Efecto Hover en Botón */
 .health-data-form button:hover {
-	background-color: #0056b3;
+    background: #009688;
+    transform: scale(1.08);
 }
 
-.health-data-form button:disabled {
-	background-color: #ccc;
-	cursor: not-allowed;
-}
-
+/* 🔔 Lista de Datos Médicos */
 .dashboard-container .health-data-list {
-	list-style-type: none;
-	padding: 0;
-	margin-top: 1.5rem;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	background-color: #fff;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    background: var(--card-background);
+    box-shadow: 0px 4px 10px var(--shadow-color);
 }
 
+/* 🖱️ Efecto Hover en la Lista */
 .dashboard-container .health-data-list li {
-	padding: 1rem;
-	border-bottom: 1px solid #ddd;
-	font-size: 1rem;
-}
-
-.dashboard-container .health-data-list li:last-child {
-	border-bottom: none;
-}
-
-.dashboard-container .health-data-list li p {
-	margin: 0.5rem 0;
-}
-
-.dashboard-container .health-data-list li strong {
-	color: #333;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
 }
 
 .dashboard-container .health-data-list li:hover {
-	background-color: #f0f0f0;
+    background-color: #d0e8ff;
 }
 
-.dashboard-container h3 {
-	color: #333;
-	font-size: 1.5rem;
-	margin-top: 2rem;
-}
-
-.dashboard-container .logout-container {
-	text-align: center;
-	margin-top: 2rem;
-}
-
+/* ❌ Botón de Logout */
 .dashboard-container button {
-	padding: 0.8rem 1.5rem;
-	font-size: 1rem;
-	background-color: #f44336;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: var(--alert-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 .dashboard-container button:hover {
-	background-color: #d32f2f;
+    background: #c1272d;
+    transform: scale(1.05);
 }
 
-.dashboard-container button:focus {
-	outline: none;
-	box-shadow: 0 0 5px rgba(244, 67, 54, 0.7);
-}
-
-.dashboard-container .loading {
-	text-align: center;
-	font-size: 1.2rem;
-	color: #777;
-}
-
+/* ⏩ Paginación */
 .pagination {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 10px;
-	gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
 }
 
 .pagination button {
-	padding: 5px 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	background-color: #f20909;
-	cursor: pointer;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.pagination button:hover {
+    background: var(--accent-color);
 }
 
 .pagination button:disabled {
-	background-color: #e0e0e0;
-	cursor: not-allowed;
+    background: #e0e0e0;
+    cursor: not-allowed;
 }
 
-.pagination span {
-	font-weight: bold;
-}
-
-@media screen and (max-width: 768px) {
-	.dashboard-container {
-		max-width: 100%;
-		margin: 0;
-		padding: 1rem;
-		border-radius: 0;
-		box-shadow: none;
-	}
-
-	.dashboard-container h2 {
-		font-size: 1.8rem;
-	}
-
-	.dashboard-container p {
-		font-size: 1rem;
-	}
-
-	.health-data-form {
-		max-width: 100%;
-		padding: 15px;
-		border: none;
-		box-shadow: none;
-	}
-
-	.health-data-form label {
-		font-size: 13px;
-	}
-
-	.health-data-form input {
-		font-size: 14px;
-		padding: 8px;
-	}
-
-	.health-data-form button {
-		font-size: 14px;
-		padding: 8px 12px;
-	}
-
-	.dashboard-container .health-data-list {
-		border: none;
-		border-radius: 0;
-		margin-top: 1rem;
-	}
-
-	.dashboard-container .health-data-list li {
-		padding: 0.8rem;
-		font-size: 0.9rem;
-	}
-
-	.dashboard-container h3 {
-		font-size: 1.3rem;
-	}
-
-	.dashboard-container .logout-container {
-		margin-top: 1.5rem;
-	}
-
-	.dashboard-container button {
-		font-size: 0.9rem;
-		padding: 0.6rem 1rem;
-		border-radius: 3px;
-	}
-
-	.pagination {
-		flex-direction: column;
-		gap: 5px;
-	}
-
-	.pagination button {
-		font-size: 12px;
-		padding: 6px 10px;
-		border-radius: 3px;
-	}
-
-	.pagination span {
-		font-size: 0.9rem;
-	}
-}
-
+/* 📢 Contenedor de Alertas */
 .alert-container {
-	background-color: #ffe4e1;
-	border-left: 5px solid #ff0000;
-	padding: 15px;
-	margin-top: 20px;
-	border-radius: 5px;
-	text-align: center;
+    background: #ffe4e1;
+    border-left: 5px solid var(--alert-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
 }
 
-.alert-message {
-	color: #b30000;
-	font-size: 16px;
-	font-weight: bold;
-}
-
+/* 🚨 Botón de Contactar Doctor */
 .contact-doctor-button {
-	display: inline-block;
-	margin-top: 10px;
-	padding: 10px 15px;
-	background-color: #ff0000;
-	color: white;
-	text-decoration: none;
-	border-radius: 5px;
-	font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background: var(--alert-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
 }
 
 .contact-doctor-button:hover {
-	background-color: #cc0000;
+    background: #c1272d;
 }
 
-.risk-level {
-	font-weight: bold;
-	color: #ff0000;
-	background-color: #ffdada;
-	padding: 3px 6px;
-	border-radius: 3px;
+/* 🔥 Animación de Botones */
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.contact-doctor-button:hover {
+    animation: bounce 0.3s ease-in-out;
+}
+
+/* 📱 Diseño Responsivo */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        padding: 1.5rem;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .dashboard-container h2 {
+        font-size: 2rem;
+    }
+
+    .health-data-form {
+        max-width: 100%;
+    }
+
+    .dashboard-container .health-data-list li {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
 }

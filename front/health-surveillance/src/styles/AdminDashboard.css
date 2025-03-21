@@ -1,123 +1,182 @@
-/* 📌 Estilos Generales */
-.admin-dashboard {
-	max-width: 900px;
-	margin: 20px auto;
-	padding: 20px;
-	background: #f4f4f4;
-	border-radius: 10px;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+/* 🎨 Variables de color */
+:root {
+    --primary-color: #005b96; /* Azul hospitalario */
+    --secondary-color: #00bfa5; /* Verde tecnológico */
+    --alert-color: #ff3b30; /* Rojo alerta */
+    --background-color: #f8f9fa; /* Fondo general */
+    --card-background: #ffffff; /* Fondo de tarjetas */
+    --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
-h1,
-h2 {
-	text-align: center;
-	color: #333;
+/* 📌 Estilos Generales */
+.admin-dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px var(--shadow-color);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 /* 🔔 Notificaciones */
 .notifications {
-	background: #fff;
-	padding: 15px;
-	border-radius: 8px;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-	margin-bottom: 20px;
+    background: var(--card-background);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px var(--shadow-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover en Notificaciones */
+.notifications:hover {
+    transform: scale(1.02);
 }
 
 .notifications ul {
-	list-style: none;
-	padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
+/* Estilo de cada notificación */
 .notifications li {
-	background: #fdfdfd;
-	margin-bottom: 10px;
-	padding: 10px;
-	border-left: 5px solid #ff3b30;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    background: #ffebee;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-left: 6px solid var(--alert-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
 }
 
+.notifications li:hover {
+    background: #ffcdd2;
+}
+
+/* Botón de acción en notificaciones */
 .notifications a {
-	background: #28a745;
-	color: white;
-	text-decoration: none;
-	padding: 5px 10px;
-	border-radius: 5px;
-	transition: 0.3s;
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 .notifications a:hover {
-	background: #218838;
+    background: #009688;
+    transform: scale(1.05);
 }
 
 /* 📋 Lista de Pacientes */
 .patient-list {
-	background: #fff;
-	padding: 15px;
-	border-radius: 8px;
-	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background: var(--card-background);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px var(--shadow-color);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover en Lista de Pacientes */
+.patient-list:hover {
+    transform: scale(1.02);
 }
 
 .patient-list ul {
-	list-style: none;
-	padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
+/* Estilo de cada paciente */
 .patient-list li {
-	background: #e9ecef;
-	margin-bottom: 10px;
-	padding: 10px;
-	border-radius: 5px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    background: #e3f2fd;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease-in-out;
 }
 
+.patient-list li:hover {
+    background: #bbdefb;
+}
+
+/* Botón de Ver Detalles */
 .patient-list button {
-	background: #007bff;
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: 0.3s;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 .patient-list button:hover {
-	background: #0056b3;
+    background: #004080;
+    transform: scale(1.05);
+}
+
+/* ❌ Botón de eliminar */
+.delete-button {
+    background-color: var(--alert-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+    transform: scale(1.05);
 }
 
 /* 📱 Diseño Responsivo */
 @media screen and (max-width: 600px) {
-	.admin-dashboard {
-		padding: 15px;
-	}
+    .admin-dashboard {
+        padding: 15px;
+    }
 
-	.notifications li,
-	.patient-list li {
-		flex-direction: column;
-		align-items: flex-start;
-	}
+    .notifications li,
+    .patient-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-	.notifications a,
-	.patient-list button {
-		margin-top: 5px;
-		width: 100%;
-		text-align: center;
-	}
-}
-
-.delete-button {
-	background-color: red;
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	margin-left: 10px;
-	cursor: pointer;
-	border-radius: 5px;
-}
-
-.delete-button:hover {
-	background-color: darkred;
+    .notifications a,
+    .patient-list button,
+    .delete-button {
+        margin-top: 5px;
+        width: 100%;
+        text-align: center;
+    }
 }

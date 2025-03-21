@@ -1,44 +1,96 @@
+/* 🌈 Variables de colores mejorados */
+:root {
+  --primary-color: #0077b6; /* Azul profesional */
+  --secondary-color: #ffffff; /* Blanco puro */
+  --accent-color: #00b894; /* Verde esmeralda - Innovación y salud */
+  --background-color: #f8f9fa; /* Gris claro */
+  --text-color: #444; /* Color para textos */
+}
+
+/* 🌍 Animación de carga */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🎭 Efecto de zoom en imágenes */
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 📌 Sección Principal */
 .home {
   text-align: center;
-  margin: 2rem;
-  padding: 0 1rem;
+  margin: 3rem;
+  padding: 1.5rem;
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
+/* 🏥 Títulos */
 .home h2 {
   color: var(--primary-color);
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
 }
 
+/* 🖱️ Hover en el título */
+.home h2:hover {
+  color: var(--accent-color);
+}
+
+/* 📋 Texto */
 .home p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #555;
-  line-height: 1.5;
+  font-size: 1.3rem;
+  margin-bottom: 1.8rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: transform 0.3s ease-in-out;
 }
 
+/* 🖱️ Efecto Hover en texto */
+.home p:hover {
+  transform: scale(1.02);
+}
+
+/* 🖼️ Imagen */
 .home img {
   max-width: 70%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s;
+  animation: zoomIn 0.8s ease-in-out;
 }
 
+/* 🖱️ Efecto Hover en Imagen */
+.home img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* 📱 Diseño Responsivo */
 @media screen and (max-width: 768px) {
   .home {
-    margin: 1rem;
-    padding: 1rem;
+      margin: 1.5rem;
+      padding: 1rem;
   }
 
   .home h2 {
-    font-size: 1.5rem;
+      font-size: 1.8rem;
   }
 
   .home p {
-    font-size: 1rem;
+      font-size: 1.1rem;
   }
 
   .home img {
-    max-width: 100%;
-    height: auto;
+      max-width: 90%;
+      height: auto;
   }
 }

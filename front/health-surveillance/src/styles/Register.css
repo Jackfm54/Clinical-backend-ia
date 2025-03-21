@@ -1,127 +1,169 @@
+/* 🌈 Variables de colores */
+:root {
+    --primary-color: #0077b6; /* Azul profesional */
+    --secondary-color: #ffffff; /* Blanco puro */
+    --accent-color: #00b894; /* Verde esmeralda - Innovación y salud */
+    --background-color: #f1f3f4; /* Gris claro */
+    --text-color: #444; /* Color para textos */
+    --error-color: #f44336; /* Rojo alerta */
+    --success-color: #4caf50; /* Verde éxito */
+}
+
+/* 🌍 Animación de carga */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🎭 Efecto de pulsación en el indicador de grabación */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 📌 Contenedor del formulario */
 .register {
-	max-width: 400px;
-	margin: 3rem auto;
-	padding: 2rem;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	background-color: #fff;
-	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-	font-family: Arial, sans-serif;
-  }
-  
-  .register h2 {
-	text-align: center;
-	color: #4caf50;
-	margin-bottom: 1.5rem;
-  }
-  
-  .register form {
-	display: flex;
-	flex-direction: column;
-  }
-  
-  .register label {
-	font-weight: bold;
-	margin-bottom: 0.5rem;
-	color: #333;
-  }
-  
-  .register input {
-	margin-bottom: 1rem;
-	padding: 0.8rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 1rem;
-	transition: border-color 0.3s ease;
-  }
-  
-  .register input:focus {
-	border-color: #4caf50;
-	outline: none;
-	box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-  }
-  
-  .register button {
-	background-color: #4caf50;
-	color: white;
-	padding: 0.8rem;
-	font-size: 1rem;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	margin-bottom: 1rem;
-  }
-  
-  .register button:hover {
-	background-color: #388e3c;
-  }
-  
-  .register .webcam-container {
-	text-align: center;
-	margin: 1rem 0;
-  }
-  
-  .register .webcam-container video {
-	border: 2px solid #ddd;
-	border-radius: 8px;
-	width: 100%;
-	max-width: 300px;
-  }
-  
-  .register .recording-indicator {
-	color: red;
-	font-weight: bold;
-	margin-top: 0.5rem;
-	text-align: center;
-  }
-  
-  .register p {
-	text-align: center;
-	margin-top: 1rem;
-	font-size: 0.9rem;
-  }
-  
-  .register p.success {
-	color: #4caf50;
-  }
-  
-  .register p.error {
-	color: #f44336;
-  }
-  
-  @media screen and (max-width: 768px) {
-	.register {
-	  max-width: 100%;
-	  margin: 1rem auto;
-	  padding: 1.5rem;
-	  border: 1px solid #ddd;
-	  border-radius: 8px;
-	  background-color: #fff;
-	  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-	}
-  
-	.register h2 {
-	  font-size: 1.5rem;
-	  margin-bottom: 1rem;
-	}
-  
-	.register label {
-	  font-size: 0.9rem;
-	}
-  
-	.register input {
-	  font-size: 0.9rem;
-	  padding: 0.7rem;
-	}
-  
-	.register button {
-	  font-size: 0.9rem;
-	  padding: 0.7rem;
-	}
-  
-	.register p {
-	  font-size: 0.8rem;
-	}
-  }
-  
+    max-width: 420px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--secondary-color);
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🏥 Título */
+.register h2 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* 📋 Formulario */
+.register form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🏷️ Etiquetas */
+.register label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+/* 📝 Campos de entrada */
+.register input {
+    margin-bottom: 1rem;
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🎯 Efecto Focus */
+.register input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0px 0px 6px var(--accent-color);
+    outline: none;
+}
+
+/* 🚀 Botón de registro */
+.register button {
+    background-color: blue;
+    color: var(--secondary-color);
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 191, 165, 0.3);
+}
+
+/* 🎭 Efecto Hover en Botón */
+.register button:hover {
+    background: #009688;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 191, 165, 0.4);
+}
+
+/* 📷 Contenedor de la Webcam */
+.register .webcam-container {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* 📹 Video de la webcam */
+.register .webcam-container video {
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔴 Indicador de grabación */
+.register .recording-indicator {
+    color: var(--error-color);
+    font-weight: bold;
+    margin-top: 0.5rem;
+    text-align: center;
+    animation: pulse 1s infinite ease-in-out;
+}
+
+/* ✅ Mensajes de éxito y error */
+.register p {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.register p.success {
+    color: var(--success-color);
+}
+
+.register p.error {
+    color: var(--error-color);
+}
+
+/* 📱 Diseño Responsivo */
+@media screen and (max-width: 768px) {
+    .register {
+        max-width: 100%;
+        margin: 1.5rem auto;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .register h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .register label {
+        font-size: 0.95rem;
+    }
+
+    .register input {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .register button {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
+
+    .register p {
+        font-size: 0.85rem;
+    }
+}

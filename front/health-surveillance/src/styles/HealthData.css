@@ -1,124 +1,178 @@
-.health-data {
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 2rem;
-	background-color: #f9f9f9;
-	border-radius: 8px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* 🌈 Variables de colores */
+:root {
+    --primary-color: #0077b6; /* Azul profesional */
+    --secondary-color: #ffffff; /* Blanco puro */
+    --accent-color: #00b894; /* Verde esmeralda */
+    --background-color: #f1f3f4; /* Gris claro */
+    --text-color: #444; /* Color de texto */
+    --border-color: #ccc; /* Borde de campos */
+    --hover-color: #009688; /* Verde oscuro en hover */
 }
 
+/* 🌍 Animación de carga */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📌 Contenedor del formulario */
+.health-data {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--secondary-color);
+    border-radius: 12px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+    font-family: 'Arial', sans-serif;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🏥 Títulos */
 .health-data h2,
 .health-data h3 {
-	text-align: center;
-	color: #4caf50;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
 }
 
+/* 🖱️ Hover en títulos */
+.health-data h2:hover,
+.health-data h3:hover {
+    color: var(--accent-color);
+}
+
+/* 📋 Formulario */
 .health-data form {
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
 }
 
+/* 🏷️ Etiquetas */
 .health-data label {
-	margin-bottom: 0.5rem;
-	font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
 }
 
+/* 📝 Campos de entrada */
 .health-data input {
-	margin-bottom: 1rem;
-	padding: 0.8rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 🎯 Efecto Focus */
+.health-data input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0px 0px 6px var(--accent-color);
+    outline: none;
+}
+
+/* 🚀 Botón de acción */
 .health-data button {
-	background-color: #4caf50;
-	color: white;
-	padding: 0.8rem;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    background-color: blue;
+    color: var(--secondary-color);
+    padding: 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 191, 165, 0.3);
 }
 
+/* 🎭 Efecto Hover en Botón */
 .health-data button:hover {
-	background-color: #388e3c;
+    background: var(--hover-color);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 191, 165, 0.4);
 }
 
+/* 🔎 Caja de búsqueda */
 .search-box {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
+/* 📄 Lista de Usuarios */
 .user-list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	border: 1px solid #ccc;
-	border-radius: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--secondary-color);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* 🖱️ Estilos de cada usuario */
 .user-list li {
-	padding: 0.8rem;
-	border-bottom: 1px solid #ddd;
-	cursor: pointer;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
+/* 🎭 Efecto Hover en Usuario */
 .user-list li:hover {
-	background-color: #f0f0f0;
+    background-color: var(--background-color);
+    transform: scale(1.02);
 }
 
-.user-list li:last-child {
-	border-bottom: none;
-}
-
+/* 📱 Diseño Responsivo */
 @media screen and (max-width: 768px) {
-	.health-data {
-		max-width: 100%;
-		padding: 1rem;
-		margin: 0;
-		border-radius: 0;
-		box-shadow: none;
-	}
+    .health-data {
+        max-width: 100%;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-	.health-data h2,
-	.health-data h3 {
-		font-size: 1.5rem;
-		color: #388e3c;
-	}
+    .health-data h2,
+    .health-data h3 {
+        font-size: 1.8rem;
+    }
 
-	.health-data form {
-		gap: 10px;
-		margin-bottom: 1rem;
-	}
+    .health-data form {
+        gap: 10px;
+        margin-bottom: 1.5rem;
+    }
 
-	.health-data label {
-		font-size: 0.9rem;
-	}
+    .health-data label {
+        font-size: 0.95rem;
+    }
 
-	.health-data input {
-		padding: 0.6rem;
-		font-size: 0.9rem;
-	}
+    .health-data input {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
 
-	.health-data button {
-		padding: 0.6rem;
-		font-size: 0.9rem;
-	}
+    .health-data button {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+    }
 
-	.search-box {
-		flex-direction: column;
-		gap: 10px;
-	}
+    .search-box {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-	.user-list {
-		border: none;
-		border-radius: 0;
-	}
+    .user-list {
+        border: none;
+        border-radius: 0;
+    }
 
-	.user-list li {
-		padding: 0.6rem;
-		font-size: 0.9rem;
-	}
+    .user-list li {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
 }

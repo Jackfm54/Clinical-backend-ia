@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { api } from "../services/api";
 import io from "socket.io-client";
@@ -13,6 +13,7 @@ const Message = ({ user }) => {
   const patientEmail = params.get("email");
   const [receiver, setReceiver] = useState(null);
 
+  // Récupérer le destinataire
   useEffect(() => {
     const fetchReceiver = async () => {
       try {
@@ -29,6 +30,18 @@ const Message = ({ user }) => {
     fetchReceiver();
   }, [patientEmail]);
 
+  // ✅ Utiliser useCallback pour stabiliser fetchMessages
+  const fetchMessages = useCallback(async () => {
+    if (!receiver || !user) return;
+    try {
+      const response = await api.get(`/chat/${user.id}/${receiver.id}`);
+      setMessages(response.data);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des messages :", error);
+    }
+  }, [receiver, user]); // Dépendances nécessaires
+
+  // useEffect pour gérer les messages en temps réel
   useEffect(() => {
     if (!receiver || !user) return;
     fetchMessages();
@@ -42,17 +55,7 @@ const Message = ({ user }) => {
     return () => {
       socket.off("receiveMessage");
     };
-  }, [receiver, user]);
-
-  const fetchMessages = async () => {
-    if (!receiver || !user) return;
-    try {
-      const response = await api.get(`/chat/${user.id}/${receiver.id}`);
-      setMessages(response.data);
-    } catch (error) {
-      console.error("Erreur lors de la récupération des messages :", error);
-    }
-  };
+  }, [receiver, user, fetchMessages]); // ✅ Ajout de fetchMessages
 
   const handleSendMessage = async () => {
     if (!newMessage.trim() || !receiver) return;
